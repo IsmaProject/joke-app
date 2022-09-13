@@ -32,5 +32,5 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_TOKEN}}
-          heroku_app_name: "Test" #Must be unique in Heroku
+          heroku_app_name: "herokuclci" #Must be unique in Heroku
           heroku_email: "toure.ipro@gmail.com"
