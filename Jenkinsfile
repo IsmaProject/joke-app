@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "echo 'The workflow is building'"
+                sh 'echo "Building"'
             }
+        }
     }
 }
