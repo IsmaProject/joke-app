@@ -24,7 +24,7 @@ pipeline {
         stage('deploy') {
             steps {
                 script {
-                    docker.withRegistry('registry.heroku.com', 'herokuid') {
+                    docker.withRegistry('https://registry.heroku.com', 'herokuid') {
                         def image = docker.build("${env.tag}")
                         image.push()
                     }
