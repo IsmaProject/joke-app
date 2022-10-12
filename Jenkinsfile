@@ -25,9 +25,12 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.heroku.com', 'herokuid') {
-                        def image = docker.build("${env.tag}")
-                        image.push()
+                        sh "docker buildx build --platform linux/amd64 -t ${tag}:latest -t ${tag}:${env.BUILD_ID} ."
+                        sh "docker push ${tag}:latest"
                     }
+                }
+                withCredentials([usernamePassword(credentialsId: 'herokuid', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh "HEROKU_API_KEY=${PASSWORD} npx heroku container:release web --app=jenkinsappt"
                 }
             }
         }
