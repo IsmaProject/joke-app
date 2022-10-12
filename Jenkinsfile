@@ -5,7 +5,7 @@ pipeline {
         choice(name: 'NODE_VERSION', choices: ['18', '17'], description: 'Changing the version of node')
     }
 
-    environnement{
+    environnement {
         tag = "?registry.heroku.com/jenkinsappt/web"
     }
 
