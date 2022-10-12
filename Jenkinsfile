@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Building Jenk"'
+                sh "nppm install"
+                sh "npm run build"
+                sh "npm run test"
             }
         }
     }
